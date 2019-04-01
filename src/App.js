@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component,Fragment } from 'react';
+import { Route,Switch,NavLink } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
+ 
+import Configure from './pages/configure';
+import Framework from './pages/framework';
+import Servers from './pages/server';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const { Header} = Layout;
+
+class Testrouter extends Component{
+    render(){
+        return(
+            <Fragment>
+                <Header>
+                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{ lineHeight: '64px' }}>
+                        <Menu.Item key="1"><NavLink to="/" exact activeClassName="active">配置</NavLink></Menu.Item>
+                        <Menu.Item key="2"><NavLink to="/framework" activeClassName="active">搭建</NavLink></Menu.Item>
+                        <Menu.Item key="3"><NavLink to="/servers" activeClassName="active">服务器</NavLink></Menu.Item>
+                    </Menu>
+                </Header>
+                <Switch>
+                    <Route exact path="/" component={Configure}/>
+                    <Route path="/framework" component={Framework}/>
+                    <Route path="/servers" component={Servers}/>
+                </Switch>
+            </Fragment>
+        )
+    }
 }
 
-export default App;
+export default Testrouter;
