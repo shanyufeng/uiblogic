@@ -9,7 +9,8 @@ class Servers extends Component {
 constructor(props){
   super(props);
   this.state = {
-      evevtdata:[]
+      evevtdata : [],
+      loading : true
   };
   this.getApplicationEvent = this.getApplicationEvent.bind(this);
   this.getEventData = this.getEventData.bind(this);
@@ -30,6 +31,7 @@ getApplicationEvent(){
   .then((data) => {
       let evevtdata = data.message.byload;
       this.getEventData(evevtdata);
+      this.setState({loading : false});
   }).catch((err) => console.log(err.toString()));
 }
 
@@ -45,7 +47,10 @@ getEventData(data){
 }
 
 render() {
-    const tableContent = <Table dataSource={this.state.evevtdata} pagination={false}>
+
+    const{loading, evevtdata} = this.state;
+
+    const tableContent = <Table loading={loading ? true : false } dataSource={evevtdata} pagination={false}>
     <Column title="名称" dataIndex="name" key="name" width='40%' />
     <Column title="load" dataIndex="load" key="load" width='15%' defaultSortOrder={'descend'} 
     sorter={ (a, b) => a.load - b.load } />
