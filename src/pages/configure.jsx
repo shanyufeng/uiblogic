@@ -2,17 +2,14 @@ import React, { Component,Fragment } from 'react';
 import LayoutContent from '../compontents/LayoutContent';
 
 const cardContent = <Fragment>
-1.端口<br />
-scripts->start.js 新增固定端口process.env.PORT = 8000
+1.代理<br />
+若为单一代理,在package.json中可配置"proxy":"http://xxx",多个代理react-scripts的版本要修改为1.1.1,即配置"proxy":为对象(花括号形式配置)
 <br /><br />
-2.入口文件<br />
-config->paths.js module.exports中修改appIndexJs: resolveModule(resolveApp, 'src/index')
-<br /><br />
-3.标题<br />
+2.标题<br />
 暂用->每个页面中的componentDidMount中document.title="标题"
 <br /><br />
-4.运行<br />
-yarn start
+3.运行<br />
+npm run start
 <br /><br />
 </Fragment>;
 
