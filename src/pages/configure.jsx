@@ -8,7 +8,13 @@ const cardContent = <Fragment>
 2.标题<br />
 暂用->每个页面中的componentDidMount中document.title="标题"
 <br /><br />
-3.运行<br />
+3.win->默认端口修改<br />
+在package.json中start命令修改为set PORT=8090 && react-scripts start
+<br /><br />
+4.mac->默认端口修改<br />
+在package.json中start命令修改为PORT=5000 react-scripts start
+<br /><br />
+5.运行<br />
 npm run start
 <br /><br />
 </Fragment>;
